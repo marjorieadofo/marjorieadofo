@@ -1,0 +1,171 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data Analyst — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--muted:#94a3b8;--accent:#06b6d4;--glass:rgba(255,255,255,0.03)}
+    *{box-sizing:border-box;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
+    body{margin:0;background:linear-gradient(180deg,#071123 0%, #071429 60%);color:#e6eef6;min-height:100vh}
+    .container{max-width:1100px;margin:40px auto;padding:24px}
+    header{display:flex;gap:20px;align-items:center}
+    .avatar{width:92px;height:92px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:28px}
+    h1{margin:0;font-size:28px}
+    p.lead{color:var(--muted);margin:6px 0 18px}
+    .grid{display:grid;grid-template-columns:1fr 380px;gap:24px}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+    .skills-list{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{background:var(--glass);padding:8px 10px;border-radius:999px;color:var(--muted);font-weight:600;font-size:13px}
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .project{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.005));padding:12px;border-radius:10px}
+    .meta{color:var(--muted);font-size:13px}
+    footer{color:var(--muted);text-align:center;margin-top:28px}
+    .btn{display:inline-block;padding:10px 14px;border-radius:8px;background:var(--accent);color:#042027;font-weight:700;text-decoration:none}
+    table{width:100%;border-collapse:collapse;margin-top:8px}
+    th,td{padding:8px;text-align:left;border-bottom:1px solid rgba(255,255,255,0.04)}
+    @media(max-width:880px){.grid{grid-template-columns:1fr} .projects{grid-template-columns:1fr}} 
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="avatar">DA</div>
+      <div>
+        <h1>Marjorie Adofo — Data Analyst</h1>
+        <p class="lead">I turn raw data into clear insights. Python • SQL • Pandas • NumPy • Power BI • Tableau</p>
+        <a class="btn" href="#projects">View Projects</a>
+        <a class="btn" style="margin-left:10px;background:#fff;color:#032027" href="/resume.pdf" download>Download Resume</a>
+      </div>
+    </header>
+
+    <main class="grid" style="margin-top:22px">
+      <section>
+        <div class="card">
+          <h3>About</h3>
+          <p class="meta">Data analyst with experience in exploratory analysis, dashboarding, and delivering business recommendations. Comfortable with large datasets, building reproducible analyses and translating results into executive-ready reports.</p>
+        </div>
+
+        <div class="card" style="margin-top:14px">
+          <h3>Skills</h3>
+          <div class="skills-list" id="skillsList">
+            <!-- JS will populate skills chips -->
+          </div>
+          <canvas id="skillsChart" style="margin-top:12px;max-height:240px"></canvas>
+        </div>
+
+        <div class="card" id="projects" style="margin-top:14px">
+          <h3>Selected Projects</h3>
+          <div class="projects" id="projectCards">
+            <!-- JS will populate project cards -->
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:14px">
+          <h3>Sample Data Preview</h3>
+          <p class="meta">A small table example — replace this with your dataset preview or embed interactive tables (DataTables).</p>
+          <table>
+            <thead><tr><th>Name</th><th>Age</th><th>Score</th></tr></thead>
+            <tbody id="sampleTable"></tbody>
+          </table>
+        </div>
+
+      </section>
+
+      <aside>
+        <div class="card">
+          <h3>Contact</h3>
+          <p class="meta">Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+          <p class="meta">GitHub: <a href="https://github.com/your-username" target="_blank">github.com/your-username</a></p>
+          <p class="meta">LinkedIn: <a href="#">linkedin.com/in/your-profile</a></p>
+        </div>
+
+        <div class="card" style="margin-top:14px">
+          <h3>Quick Facts</h3>
+          <p class="meta">Preferred tools</p>
+          <div class="skills-list">
+            <span class="chip">Python</span>
+            <span class="chip">SQL</span>
+            <span class="chip">Pandas</span>
+            <span class="chip">Power BI</span>
+            <span class="chip">Tableau</span>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:14px">
+          <h3>Hire Me</h3>
+          <p class="meta">Open to contract and full-time roles. I can provide sample notebooks, slides, or a short walkthrough of any project on request.</p>
+          <a class="btn" href="mailto:youremail@example.com">Get in touch</a>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <small>Built with HTML, CSS & Chart.js — Customize the content and host on GitHub Pages.</small>
+    </footer>
+  </div>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // ====== Customize these values ======
+    const skills = [
+      {name: 'Python', value: 90},
+      {name: 'SQL', value: 85},
+      {name: 'Pandas', value: 88},
+      {name: 'Data Viz', value: 80},
+      {name: 'Power BI', value: 76}
+    ];
+
+    const projects = [
+      {title:'Sales Dashboard', desc:'End-to-end ETL + interactive dashboard for sales KPIs. Tools: SQL, Python, Power BI.', link:'#'},
+      {title:'Churn Model', desc:'Built a classification model to predict churn and presented actionable segments.', link:'#'},
+      {title:'A/B Analysis', desc:'Ran experimentation analysis and recommended UX changes that increased retention.', link:'#'},
+      {title:'Customer Segmentation', desc:'K-means clustering to identify top customer segments for targeted campaigns.', link:'#'}
+    ];
+
+    const sampleRows = [
+      {Name:'John', Age:24, Score:78},
+      {Name:'Anna', Age:28, Score:85},
+      {Name:'Peter', Age:35, Score:91}
+    ];
+    // =====================================
+
+    // populate skills chips
+    const skillsList = document.getElementById('skillsList');
+    skills.forEach(s=>{
+      const span = document.createElement('span');
+      span.className='chip';
+      span.textContent = `${s.name} • ${s.value}%`;
+      skillsList.appendChild(span);
+    });
+
+    // populate project cards
+    const pc = document.getElementById('projectCards');
+    projects.forEach(p=>{
+      const d = document.createElement('div'); d.className='project';
+      d.innerHTML = `<strong>${p.title}</strong><p class="meta">${p.desc}</p><p style=\"margin-top:8px\"><a href=\"${p.link}\" class=\"btn\">View</a></p>`;
+      pc.appendChild(d);
+    });
+
+    // populate sample table
+    const t = document.getElementById('sampleTable');
+    sampleRows.forEach(r=>{
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${r.Name}</td><td>${r.Age}</td><td>${r.Score}</td>`;
+      t.appendChild(tr);
+    });
+
+    // skills chart (bar)
+    const ctx = document.getElementById('skillsChart').getContext('2d');
+    new Chart(ctx, {
+      type:'bar',
+      data:{labels:skills.map(s=>s.name), datasets:[{label:'Proficiency %', data:skills.map(s=>s.value), borderRadius:6}]},
+      options:{scales:{y:{beginAtZero:true,max:100}},plugins:{legend:{display:false}}}
+    });
+
+  </script>
+</body>
+</html>
