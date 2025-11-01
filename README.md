@@ -1,4 +1,5 @@
-## Hi there 👋
+## Hi there I am Marjorie Adofo, a Data Analyst.
+## Welcome
 
 <!--
 **marjorieadofo/marjorieadofo** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
